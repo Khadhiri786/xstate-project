@@ -1,25 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink,
+
+} from "react-router-dom";
+import LoginPage from "./LoginPage";
+import Toggler from "./Toggler";
+import Checkbox from './Checkbox';
+import IncreaseWater from "./IncreaseWater";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <nav>
+        <NavLink to="/toggleButton">Toggle Button</NavLink>
+        <NavLink to="/Login" style={{ marginLeft: "10px" }}>
+          Login Page
+        </NavLink>
+        <NavLink to="/Checkbox" style={{marginLeft:'10px'}}>Checkbox</NavLink>
+        <NavLink to='/Addwater' style={{marginLeft:'10px'}}>Add water</NavLink>
+      </nav>
+        
+      <Switch>
+        <Route path="/toggleButton">
+          <Toggler />
+        </Route>
+        <Route path="/Login">
+          <LoginPage />
+        </Route>
+        <Route path='/Checkbox'>
+          <Checkbox/>
+        </Route>
+        <Route path='/Addwater'>
+          <IncreaseWater/>
+        </Route>
+        
+      </Switch>
+    </Router>
   );
 }
 
